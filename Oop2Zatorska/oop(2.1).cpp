@@ -1,28 +1,23 @@
 #include <iostream>
-using namespace std;
+
+int computeExpression(int a, int b, int c, int d) {
+    int term1 = (b << 5) + b;  // 33 * b
+    int term2 = ((d << 3) + (d << 2) + (d << 1) + d   // d * 15
+                + (a << 3) + (a << 2)) >> 9;          // + 12 * a, all / 512
+    int term3 = (c << 6) + c;  // 65 * c
+    int term4 = (d << 3) + (d << 2) + (d << 1);  // d * 14
+
+    return term1 + term2 - term3 + term4;
+}
 
 int main() {
-    // Оголошуємо змінні для введення значень
     int a, b, c, d;
-    
-    // Введення значень для a, b, c та d
-    cout << "Введіть значення a: ";
-    cin >> a;
-    
-    cout << "Введіть значення b: ";
-    cin >> b;
-    
-    cout << "Введіть значення c: ";
-    cin >> c;
-    
-    cout << "Введіть значення d: ";
-    cin >> d;
+    std::cout << "Enter integers a, b, c, d: ";
+    std::cin >> a >> b >> c >> d;
 
-    // Обчислення виразу з побітовими операціями
-    int result = ((b << 5) + b) + (((d << 4) - d + ((a << 3) + (a << 2))) >> 9) - ((c << 6) + (c << 1)) + ((d << 4) - (d << 1));
-
-    // Виведення результату
-    cout << "Результат виразу: " << result << endl;
+    int result = computeExpression(a, b, c, d);
+    std::cout << "Result: " << result << std::endl;
 
     return 0;
 }
+
